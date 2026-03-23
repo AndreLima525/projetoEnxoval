@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Página Inicial</title>
 	<link rel="stylesheet" type="text/css" href="../styles/styleIndex.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 	<div class="main">
@@ -18,15 +19,11 @@
 			</div>
 			<div class="form">
 				<form method="POST">
-					<label>Nome</label>
-					<input type="text" name="nome">
 
-					<label>Número de Telefone</label>
-					<input type="text" name="telefone">
-
-					<button name="avancar">
-						Avançar
-					</button>
+					<a href="main.php" name="avancar">
+						<span> Avançar  </span> 
+						<i class="fa fa-arrow-right"></i>
+					</a>
 				</form>
 			</div>
 		</div>

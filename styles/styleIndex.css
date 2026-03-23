@@ -7,7 +7,7 @@
 
 body {
 	height: 100vh;
-	background: linear-gradient(135deg, #0f172a 30%, #7f1d1d 100%);
+	background: linear-gradient(135deg, #FBF5E9 40%, #95B9D1 100%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -20,10 +20,11 @@ body {
 }
 
 .card {
-		background: #ffffff;
+	background: rgba(255,255,255,0.85);
 	border-radius: 16px;
-	box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+	box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 	padding: 30px 20px;
+	backdrop-filter: blur(10px);
 }
 
 .img img {
@@ -44,11 +45,7 @@ body {
 	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 5px;
-
-	/* gradiente azul + vinho */
-	background: linear-gradient(135deg, #0f172a 30%, #7f1d1d 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color:#1e3a5f;;
 }
 
 .sub {
@@ -84,26 +81,41 @@ input:focus {
 	background: #fff;
 }
 
-button {
+a {
 	margin-top: 15px;
 	padding: 12px;
 	border: none;
 	border-radius: 8px;
-	background: #1e3a8a; 
+	background: #588AAD;
 	color: white;
 	font-size: 16px;
 	cursor: pointer;
 	transition: 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	text-decoration: none;
+
 }
 
-button:hover {
-	background: #7f1d1d;
+a:hover {
+	background: #466f8c;
+}
+
+a i {
+	transition: transform 0.3s;
+}
+
+a:hover i {
+	transform: translateX(5px);
 }
 
 .sub {
 	font-size: 13px;
-	color: #888;
+	color: #588AAD;
 	margin-bottom: 15px;
+	letter-spacing: 1px;
 }
 
 @media (max-width: 480px) {
