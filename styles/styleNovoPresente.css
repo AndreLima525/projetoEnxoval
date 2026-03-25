@@ -1,0 +1,164 @@
+
+.card {
+	background: #fff;
+	border-radius: 16px;
+	padding: 25px;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+	width: 100%;
+	max-width: 600px;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 15px;
+}
+
+.form-group.full {
+	grid-column: span 2;
+}
+
+input[type="file"] {
+	padding: 6px;
+	background: #f9f9f9;
+	cursor: pointer;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	font-size: 13px;
+	margin-bottom: 5px;
+	color: #555;
+}
+
+.form-group input,
+.form-group select {
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	outline: none;
+	transition: 0.3s;
+	height: 42px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+	border-color: #588AAD;
+	box-shadow: 0 0 5px rgba(88,138,173,0.4);
+}
+
+.form-actions {
+	grid-column: span 2;
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.btn {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	transition: 0.3s;
+}
+
+.btn-secondary {
+	background: #588AAD;
+	color: white;
+}
+
+.btn-secondary:hover {
+	background: #466f8c;
+}
+
+.btn-fechar {
+	background: #e74c3c; /* vermelho suave */
+	color: white;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+
+	padding: 10px 15px;
+	border-radius: 8px;
+	border: none;
+
+	font-size: 14px;
+	cursor: pointer;
+	transition: 0.3s;
+	width: 200px;
+}
+
+@media (max-width: 768px) {
+
+	/* BODY sem espaçamento exagerado */
+	body {
+		padding: 10px;
+	}
+
+	/* CARD ocupa mais espaço */
+	.card {
+		margin: 10px auto;
+		padding: 15px;
+		border-radius: 12px;
+	}
+
+	/* GRID vira 1 coluna */
+	.form-grid {
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+
+	/* CAMPOS ocupam tudo */
+	.form-group.full {
+		grid-column: span 1;
+	}
+
+	/* INPUTS maiores (melhor toque) */
+	.form-group input,
+	.form-group select {
+		height: 45px;
+		font-size: 16px;
+	}
+
+	/* INPUT FILE mais usável */
+	input[type="file"] {
+		font-size: 14px;
+	}
+
+	/* BOTÃO ocupa largura total */
+	.form-actions {
+		grid-column: span 1;
+		width: 100%;
+	}
+
+	.btn {
+		width: 100%;
+		justify-content: center;
+		padding: 12px;
+		font-size: 15px;
+	}
+
+	.btn-fechar {
+		width: 100%;
+		justify-content: center;
+		padding: 12px;
+		font-size: 15px;
+	}
+
+	/* TÍTULO menor */
+	h2 {
+		font-size: 20px;
+	}
+
+}
