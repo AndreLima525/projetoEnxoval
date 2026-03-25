@@ -24,16 +24,19 @@
 
 			<div class="form-group">
 				<label>Descrição do Presente</label>
-				<input type="text" name="dsProduto">
+				<input type="text" name="dsPresente">
 			</div>
 
 			<div class="form-group">
 				<label>Cômodo</label>
 
-				<select name="categoria">
+				<select name="comodo">
+
 					<option value="" disabled selected> -- Selecione -- </option>
 
-
+					<?php foreach ($resultComodos as $result ): ?>	
+						<option value="<?= $result['idComodo']; ?>"> <?= $result['dsComodo']; ?></option>
+					<?php endforeach;?>	
 
 				</select>
 
@@ -53,30 +56,30 @@
 	</div>
 	<div class="card-presentes">
 
-	<div class="presente-item">
-		<img src="../images/fotoCasal.jpeg">
-		<p>Jogo de Panelas</p>
-		<a href="" class="btn-presentear">
-			<i class="fa-solid fa-gift"></i> Presentear
-		</a>
-	</div>
+	<?php foreach ($dadosPresentes as $dados ): ?>
+		<div class="presente-item">
 
-	<div class="presente-item">
-		<img src="../images/fotoCasal.jpeg">
-		<p>Liquidificador</p>
-		<a href="" class="btn-presentear">
-			<i class="fa-solid fa-gift"></i> Presentear
-		</a>
-	</div>
+			<img src="../images/fotoCasal.jpeg">
 
-	<div class="presente-item">
-		<img src="../images/fotoCasal.jpeg">
-		<p>Toalhas</p>
-		<a href="" class="btn-presentear">
-			<i class="fa-solid fa-gift"></i> Presentear
-		</a>
-	</div>
+			<p><?= $dados['dsPresente'] ?></p>
 
+			<?php if ($dados['status'] == 'D'):?>
+
+				<a href="" class="btn-presentear">
+					<i class="fa-solid fa-gift"></i> Presentear
+				</a>
+
+			<?php endif; ?>
+
+			<?php if ($dados['status'] == 'R'):?>
+
+				<button href="" class="btn-reservado" disabled>
+					<i class="fa-solid fa-gift"></i> Reservado
+				</button>
+
+			<?php endif; ?>		
+		</div>
+	<?php endforeach;?>
 </div>
 </body>
 </html>
