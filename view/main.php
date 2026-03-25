@@ -1,3 +1,5 @@
+<?php require_once('../controller/mainController.php'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,9 +42,12 @@
 			<div class="form-actions">
 				<button type="submit" class="btn btn-secondary" name="pesquisar">
 					<i class="fa-solid fa-magnifying-glass"></i> Pesquisar
+				</button> &nbsp;
+				<button type="submit" class="btn btn-secondary" name="novo">
+					<i class="fa-solid fa-plus"></i></i> Incluir Presente
 				</button>
 			</div>
-
+			
 		</form>
 
 	</div>
