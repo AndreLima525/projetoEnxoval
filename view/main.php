@@ -12,7 +12,7 @@
 <body>
 	<div class="page-header">
 		<h2>
-			Lista de Produtos
+			Lista de Presentes
 		</h2>
 	</div>
 
@@ -46,7 +46,7 @@
 				<button type="submit" class="btn btn-secondary" name="pesquisar">
 					<i class="fa-solid fa-magnifying-glass"></i> Pesquisar
 				</button> &nbsp;
-				<button type="button" class="btn btn-secondary" class="btn-presentear" id="btnNovo">
+				<button type="button" class="btn btn-secondary" id="btnNovo">
 					<i class="fa-solid fa-plus"></i></i> Incluir Presente
 				</button>
 			</div>
@@ -82,7 +82,7 @@
 
 				<?php if ($dados['status'] == 'R'):?>
 
-					<a type="button" class="btn-reservado">
+					<a class="btn-reservado">
 						Reservado
 					</a>
 

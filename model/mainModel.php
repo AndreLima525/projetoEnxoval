@@ -10,7 +10,7 @@ function getPresentes($dsPresente = null, $idComodo = null){
 	$sql = "SELECT * FROM presentes WHERE 1=1";
 
 	if ($dsPresente !== null && $dsPresente !== '') {
-		$sql .= " AND dsPresente = :dsPresente";
+		$sql .= " AND dsPresente LIKE :dsPresente";
 		$params[':dsPresente'] = "%$dsPresente%";
 	}
 
