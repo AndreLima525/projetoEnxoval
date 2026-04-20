@@ -1,4 +1,3 @@
-
 .card {
 	background: #fff;
 	border-radius: 16px;
@@ -7,6 +6,7 @@
 
 	width: 100%;
 	max-width: 600px;
+	margin: 0 auto;
 }
 
 .form-grid {
@@ -69,6 +69,7 @@ input[type="file"] {
 	align-items: center;
 	gap: 8px;
 	transition: 0.3s;
+	text-decoration: none;
 }
 
 .btn-secondary {
@@ -97,7 +98,10 @@ input[type="file"] {
 	cursor: pointer;
 	transition: 0.3s;
 	width: 200px;
+
+	text-decoration: none;
 }
+	
 
 @media (max-width: 768px) {
 

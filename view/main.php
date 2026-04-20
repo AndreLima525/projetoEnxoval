@@ -54,12 +54,21 @@
 		</form>
 
 	</div>
+
+
 	<div class="card-presentes">
 
+		<?php 
+
+		if(empty($dadosPresentes)) {
+
+			echo "Nenhum registro encontrado!";
+		}
+		?>
 		<?php foreach ($dadosPresentes as $dados ): ?>
 			<div class="presente-item">
 
-				<img src="../images/fotoCasal.jpeg">
+				<img src="../images/<?= $dados['imgPresente'] ?>">
 
 				<p><?= $dados['dsPresente'] ?></p>
 
@@ -73,8 +82,8 @@
 
 				<?php if ($dados['status'] == 'R'):?>
 
-					<button href="" class="btn-reservado" disabled>
-						<i class="fa-solid fa-gift"></i> Reservado
+					<button type="button" class="btn-fechar">
+						Fechar
 					</button>
 
 				<?php endif; ?>		
@@ -83,41 +92,39 @@
 	</div>
 
 	<div id="modalPresente" class="modal">
-		<div class="modal-content">			
-
-			<div id="conteudoModal"></div> <!-- conteúdo vem aqui -->
+		<div class="modal-content">
+			<span class="fechar">
+			</span>
+			<div id="conteudoModal"></div>
 		</div>
 	</div>
-
 	<script>
 		const modal = document.getElementById("modalPresente");
 		const btn = document.getElementById("btnNovo");
-		const fechar = document.querySelector(".fechar");
 		const conteudo = document.getElementById("conteudoModal");
+		const fechar = document.querySelector(".fechar");
 
 		btn.onclick = () => {
-			modal.style.display = "flex";
-
-	// carrega a outra página
 			fetch("cadastroPresente.php")
-			.then(res => res.text())
+			.then(response => response.text())
 			.then(html => {
 				conteudo.innerHTML = html;
+				modal.classList.add("ativo");
+			})
+			.catch(() => {
+				conteudo.innerHTML = "<p>Erro ao carregar formulário</p>";
 			});
 		};
 
-		fechar.onclick = () => {
-			modal.style.display = "none";
-	conteudo.innerHTML = ""; // limpa ao fechar
-	};
+		document.addEventListener("click", function(e) {
 
-	modal.addEventListener("click", (e) => {
-		if (e.target === modal) {
-			modal.style.display = "none";
-			conteudo.innerHTML = "";
-		}
-	});
-</script>
+			if (e.target.closest(".btn-fechar")) {
+				modal.classList.remove("ativo");
+				conteudo.innerHTML = "";
+			}
+		});
+
+	</script>
 </body>
 </html>
 
