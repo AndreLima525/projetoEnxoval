@@ -82,9 +82,9 @@
 
 				<?php if ($dados['status'] == 'R'):?>
 
-					<button type="button" class="btn-fechar">
-						Fechar
-					</button>
+					<a type="button" class="btn-reservado">
+						Reservado
+					</a>
 
 				<?php endif; ?>		
 			</div>
