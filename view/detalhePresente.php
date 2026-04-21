@@ -29,7 +29,7 @@
 
 					<a href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank" class="btn-comprar">
 						<i class="fa-solid fa-gift"></i>
-						Ver presente
+						Presentear
 					</a>
 
 					<a href="main.php"  class="btn-voltar">
