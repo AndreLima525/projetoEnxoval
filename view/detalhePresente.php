@@ -1,7 +1,5 @@
 <?php require_once('../controller/detalhePresenteController.php'); ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
