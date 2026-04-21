@@ -13,5 +13,34 @@
 </head>
 <body>
 
+	<div class="card-presentes">
+		<div class="card-detalhe">
+
+			<?php foreach($presente as $dadosPresentes): ?>
+				<img src="../images/<?= $dadosPresentes['imgPresente'] ?>" class="img-presente">
+
+				<div class="info-presente">
+					<h2><?= $dadosPresentes['dsPresente'] ?></h2>
+
+					<p class="valor">
+						<i class="fa-solid fa-tag"></i>
+						R$ <?= number_format($dadosPresentes['valorPresente'], 2, ',', '.') ?>
+					</p>
+
+					<a href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank" class="btn-comprar">
+						<i class="fa-solid fa-gift"></i>
+						Ver presente
+					</a>
+
+					<a href="main.php"  class="btn-voltar">
+						<i class="fa-solid fa-arrow-left"></i>
+						Voltar à lista
+					</a>
+				</div>
+			<?php endforeach; ?>
+
+		</div>
+	</div>
+
 </body>
 </html>

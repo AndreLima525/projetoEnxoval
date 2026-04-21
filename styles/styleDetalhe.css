@@ -1,14 +1,148 @@
+/* RESET */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Arial, sans-serif;
+	font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-	height: 100vh;
+	min-height: 100vh;
 	background: linear-gradient(135deg, #FBF5E9 40%, #95B9D1 100%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 20px;
+}
+
+/* CARD PRINCIPAL */
+.card-detalhe {
+	background: #fff;
+	border-radius: 18px;
+	padding: 25px;
+	box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+
+	display: flex;
+	gap: 25px;
+	align-items: center;
+
+	max-width: 700px;
+	width: 100%;
+	transition: 0.3s;
+}
+
+.card-detalhe:hover {
+	transform: translateY(-3px);
+}
+
+/* IMAGEM */
+.img-presente {
+	width: 300px;
+	height: 300px;
+	object-fit: contain;
+
+	border-radius: 14px;
+	background: #f7f7f7;
+	padding: 15px;
+
+	box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* INFO */
+.info-presente {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	flex: 1;
+	text-align: center;
+}
+
+.info-presente h2 {
+	color: #1e3a5f;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+/* VALOR */
+.valor {
+	font-size: 20px;
+	font-weight: bold;
+	color: #2e7d32;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	text-align: center;
+}
+
+/* BOTÃO */
+.btn-comprar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+
+	background: linear-gradient(135deg, #588AAD, #466f8c);
+	color: white;
+	text-decoration: none;
+
+	padding: 12px 20px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 500;
+
+	transition: all 0.3s ease;
+	width: 200px;
+	height: 40px;
+}
+
+.btn-comprar:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn-voltar {
+
+	background: #e74c3c; /* vermelho suave */
+	color: white;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+
+	padding: 10px 15px;
+	border-radius: 8px;
+	border: none;
+
+	font-size: 14px;
+	cursor: pointer;
+	transition: 0.3s;
+	width: 200px;
+	height: 40px;
+
+	text-decoration: none;
+}
+
+.btn-voltar:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+	.card-detalhe {
+		flex-direction: column;
+		text-align: center;
+		padding: 20px;
+	}
+
+	.img-presente {
+		width: 100%;
+		height: 200px;
+	}
+
+	.btn-comprar {
+		width: 100%;
+	}
 }
