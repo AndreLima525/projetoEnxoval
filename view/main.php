@@ -74,7 +74,7 @@
 
 				<?php if ($dados['status'] == 'D'):?>
 
-					<a href="" class="btn-presentear">
+					<a href="detalhePresente.php?id=<?= $dados['idPresente'] ?>" class="btn-presentear">
 						<i class="fa-solid fa-gift"></i> Presentear
 					</a>
 
@@ -83,10 +83,18 @@
 				<?php if ($dados['status'] == 'R'):?>
 
 					<a class="btn-reservado">
-						Reservado
+						<i class="fa-solid fa-circle-check"></i> Presenteado
 					</a>
 
-				<?php endif; ?>		
+				<?php endif; ?>	
+
+				<?php if ($dados['status'] == 'C'):?>
+
+					<a class="btn-aguardando">
+						<i class="fa-solid fa-clock"></i> Reservado
+					</a>
+
+				<?php endif; ?>	
 			</div>
 		<?php endforeach;?>
 	</div>

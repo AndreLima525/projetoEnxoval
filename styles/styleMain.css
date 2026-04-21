@@ -119,6 +119,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .presente-item:hover {
@@ -166,7 +167,35 @@ body {
 	padding: 8px 12px;
 	margin-top: 10px;
 
-	background: gray;
+	background: #6c757d;
+	color: white;
+
+	border-radius: 8px;
+	font-size: 13px;
+	transition: 0.3s;
+	cursor: not-allowed;
+}
+
+.btn-reservado i {
+	color: #e2e3e5;
+	display: flex;
+	align-items: center;
+}
+
+.btn-aguardando  i {
+	color: #fff3cd;
+}
+
+.btn-aguardando {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+
+	padding: 8px 12px;
+	margin-top: 10px;
+
+	background: #e0a800; 
 	color: white;
 
 	border-radius: 8px;
