@@ -25,10 +25,11 @@
 						R$ <?= number_format($dadosPresentes['valorPresente'], 2, ',', '.') ?>
 					</p>
 
-					<a href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank" class="btn-comprar">
+					<!-- href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank" -->
+					<button  class="btn-comprar">
 						<i class="fa-solid fa-gift"></i>
 						Presentear
-					</a>
+					</button>
 
 					<a href="main.php"  class="btn-voltar">
 						<i class="fa-solid fa-arrow-left"></i>
@@ -39,6 +40,41 @@
 
 		</div>
 	</div>
-
+	<div id="modalConfirmar" class="modal">
+		<div class="modal-content">
+			<span class="fechar">
+			</span>
+			<div id="conteudoModal"></div>
+		</div>
+	</div>
 </body>
 </html>
+<script>
+	const modal = document.getElementById("modalConfirmar");
+	const btn = document.getElementById("btn-comprar");
+	const conteudo = document.getElementById("conteudoModal");
+	const fechar = document.querySelector(".fechar");
+
+	document.querySelectorAll(".btn-comprar").forEach(btn => {
+		btn.addEventListener("click", () => {
+			fetch("detalheUsuario.php")
+			.then(response => response.text())
+			.then(html => {
+				conteudo.innerHTML = html;
+				modal.classList.add("ativo");
+			})
+			.catch(() => {
+				conteudo.innerHTML = "<p>Erro ao carregar formulário</p>";
+			});
+		});
+	});
+
+	document.addEventListener("click", function(e) {
+
+		if (e.target.closest(".btn-fechar")) {
+			modal.classList.remove("ativo");
+			conteudo.innerHTML = "";
+		}
+	});
+
+</script>
