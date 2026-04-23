@@ -48,7 +48,7 @@
 		</div>
 	</div>
 </body>
-</html>
+
 <script>
 	const modal = document.getElementById("modalConfirmar");
 	const btn = document.getElementById("btn-comprar");
@@ -78,3 +78,4 @@
 	});
 
 </script>
+</html>

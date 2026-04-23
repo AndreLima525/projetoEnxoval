@@ -1,6 +1,5 @@
 <?php
-
-
+	require_once('../controller/detalheUsuarioController.php');
 ?>
 
 <link rel="stylesheet" type="text/css" href="../styles/styleNovoUsuario.css">
