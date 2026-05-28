@@ -30,7 +30,7 @@
 
 			<button type="button" class="btn-fechar">
 				
-				Voltar à Lista
+				Voltar 
 			</button>
 		</div>
 

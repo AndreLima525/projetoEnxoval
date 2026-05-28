@@ -62,7 +62,12 @@
 
 		if(empty($dadosPresentes)) {
 
-			echo "Nenhum registro encontrado!";
+			echo "
+			<script>
+				alert('Nenhum presente encontrado!');
+				window.location.href = '../view/main.php';
+			</script>
+			";
 		}
 		?>
 		<?php foreach ($dadosPresentes as $dados ): ?>
@@ -80,7 +85,7 @@
 
 				<?php endif; ?>
 
-				<?php if ($dados['status'] == 'R'):?>
+				<?php if ($dados['status'] == 'C'):?>
 
 					<a class="btn-reservado">
 						<i class="fa-solid fa-circle-check"></i> Presenteado
@@ -88,7 +93,7 @@
 
 				<?php endif; ?>	
 
-				<?php if ($dados['status'] == 'C'):?>
+				<?php if ($dados['status'] == 'R'):?>
 
 					<a class="btn-aguardando">
 						<i class="fa-solid fa-clock"></i> Reservado
