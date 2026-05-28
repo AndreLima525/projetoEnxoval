@@ -25,11 +25,12 @@
 						R$ <?= number_format($dadosPresentes['valorPresente'], 2, ',', '.') ?>
 					</p>
 
-					<!-- href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank" -->
-					<button  class="btn-comprar">
-						<i class="fa-solid fa-gift"></i>
-						Presentear
-					</button>
+					<!-- <a href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank"> </a> -->
+						<button  class="btn-comprar">
+							<i class="fa-solid fa-gift"></i>
+							Presentear
+						</button>
+
 
 					<a href="main.php"  class="btn-voltar">
 						<i class="fa-solid fa-arrow-left"></i>
@@ -40,6 +41,8 @@
 
 		</div>
 	</div>
+
+
 	<div id="modalConfirmar" class="modal">
 		<div class="modal-content">
 			<span class="fechar">
@@ -47,6 +50,8 @@
 			<div id="conteudoModal"></div>
 		</div>
 	</div>
+
+
 </body>
 
 <script>
