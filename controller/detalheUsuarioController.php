@@ -5,16 +5,24 @@ include_once('../model/getAuxModel.php');
 
 session_start();
 
-$link = 'https://'. $_SESSION['linkPresente'];
-
-//echo $_SESSION['linkPresente'] ;
-
-if (!isset($_SESSION['nome']) && !isset($_SESSION['email'])) {
-	
-	
-} else {
 
 
+if (isset($_POST['verPresente'])) {
+
+    $nome =  trim($_POST['nomeUsuario'] ?? $_SESSION['nome']);
+    $email = trim($_POST['email'] ?? $_SESSION['email']);
+
+    $_SESSION['nome'] = $nome;
+    $_SESSION['email'] = $email;
+
+    echo "
+    <script>
+        window.open('https://" . $_SESSION['linkPresente'] . "', '_blank');
+        window.location.href='../view/detalhePresente.php?id=" . $_SESSION['idPresente'] . "';
+    </script>";
+
+    exit;
 }
+
 
 ?>

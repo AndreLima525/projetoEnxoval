@@ -26,13 +26,13 @@
 					</p>
 
 					<!-- <a href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank"> </a> -->
-						<button  class="btn-comprar">
+						<button  class="btn-comprar" id="comprar">
 							<i class="fa-solid fa-gift"></i>
 							Presentear
 						</button>
 
 
-					<a href="main.php"  class="btn-voltar">
+					<a href="main.php"  class="btn-voltar" id="fecharModal">
 						<i class="fa-solid fa-arrow-left"></i>
 						Voltar à lista
 					</a>
@@ -55,32 +55,68 @@
 </body>
 
 <script>
-	const modal = document.getElementById("modalConfirmar");
-	const btn = document.getElementById("btn-comprar");
-	const conteudo = document.getElementById("conteudoModal");
-	const fechar = document.querySelector(".fechar");
+const modal = document.getElementById("modalConfirmar");
+const conteudo = document.getElementById("conteudoModal");
 
-	document.querySelectorAll(".btn-comprar").forEach(btn => {
-		btn.addEventListener("click", () => {
-			fetch("detalheUsuario.php")
-			.then(response => response.text())
-			.then(html => {
-				conteudo.innerHTML = html;
-				modal.classList.add("ativo");
-			})
-			.catch(() => {
-				conteudo.innerHTML = "<p>Erro ao carregar formulário</p>";
-			});
-		});
-	});
 
-	document.addEventListener("click", function(e) {
+document.querySelectorAll(".btn-comprar").forEach(btn => {
 
-		if (e.target.closest(".btn-fechar")) {
-			modal.classList.remove("ativo");
-			conteudo.innerHTML = "";
-		}
-	});
+    btn.addEventListener("click", function(e){
 
+        e.preventDefault();
+
+        fetch("detalheUsuario.php")
+        .then(res => res.text())
+        .then(html => {
+
+            conteudo.innerHTML = html;
+            modal.classList.add("ativo");
+
+        });
+
+    });
+
+});
+
+
+// captura o formulário mesmo sendo carregado pelo fetch
+document.addEventListener("submit", function(e){
+
+    if(e.target.id === "formPresente"){
+
+        e.preventDefault();
+
+        const dados = new FormData(e.target);
+
+
+        fetch("detalheUsuario.php", {
+            method: "POST",
+            body: dados
+        })
+        .then(res => res.text())
+        .then(link => {
+
+            link = link.trim();
+
+            window.location.href = link;
+
+        });
+
+    }
+
+});
+
+
+// fechar modal
+document.addEventListener("click", function(e){
+
+    if(e.target.closest(".btn-fechar")){
+
+        modal.classList.remove("ativo");
+        conteudo.innerHTML = "";
+
+    }
+
+});
 </script>
 </html>
