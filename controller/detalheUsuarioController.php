@@ -15,6 +15,8 @@ if (isset($_POST['verPresente'])) {
     $_SESSION['nome'] = $nome;
     $_SESSION['email'] = $email;
 
+    $reserva = reservaPresente($nome,$email);
+
     echo "
     <script>
         window.open('https://" . $_SESSION['linkPresente'] . "', '_blank');
