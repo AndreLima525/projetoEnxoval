@@ -16,9 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		$ext = pathinfo($_FILES['imgPresente']['name'], PATHINFO_EXTENSION);
 
+// força minúsculo
+		$ext = strtolower($ext);
+
 		$extensoesPermitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
-		if (!in_array(strtolower($ext), $extensoesPermitidas)) {
+		if (!in_array($ext, $extensoesPermitidas)) {
 			die("Formato inválido!");
 		}
 
@@ -36,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		echo "
 		<script>
-			alert('Presente incluído com sucesso!');
-			window.location.href = '../view/main.php';
+		alert('Presente incluído com sucesso!');
+		window.location.href = '../view/main.php';
 		</script>
 		";
 

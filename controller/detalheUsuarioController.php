@@ -17,13 +17,6 @@ if (isset($_POST['verPresente'])) {
 
     $reserva = reservaPresente($nome,$email);
 
-    echo "
-    <script>
-        window.open('https://" . $_SESSION['linkPresente'] . "', '_blank');
-        window.location.href='../view/detalhePresente.php?id=" . $_SESSION['idPresente'] . "';
-    </script>";
-
-    exit;
 }
 
 
