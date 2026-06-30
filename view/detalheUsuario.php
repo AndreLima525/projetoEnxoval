@@ -1,5 +1,4 @@
 <?php
-//require_once('../controller/detalheUsuarioController.php');
 session_start();
 ?>
 
