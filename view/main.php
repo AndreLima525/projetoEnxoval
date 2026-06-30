@@ -65,7 +65,6 @@
 			echo "
 			<script>
 				alert('Nenhum presente encontrado!');
-				window.location.href = '../view/main.php';
 			</script>
 			";
 		}
