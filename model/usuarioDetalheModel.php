@@ -8,61 +8,91 @@ require '../PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
+$mail = new PHPMailer(true);
+
+$mail->isSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+
+$mail->Username = 'andre525luis@gmail.com';
+$mail->Password = 'ynbwrppvlxllpzdc';
+
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port = 587;
+
 function reservaPresente($nome,$email){
 
-	$idPresente = $_SESSION['idPresente'];
+    global $pdo, $mail;
 
-	global $pdo;
+    $idPresente = $_SESSION['idPresente'];
+    $sql = "SELECT * FROM presentes WHERE idPresente = :idPresente";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['idPresente' => $idPresente]);
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	$sql = "SELECT * FROM presentes WHERE idPresente = '$idPresente';";
+    if (!$resultado) {
+        echo "<script>alert('Algum erro ocorreu!');</script>";
+        header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
+        exit;
+    }
 
-	$stmt = $pdo-> query($sql) or die("Falha na execção!"); 
-	$resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);;
+    $dsPresente = $resultado['dsPresente'];
+    $valorPresente = $resultado['valorPresente'];
+    $imgPresente = $resultado['imgPresente'];
 
-	if (!empty($resultados)) {
+    $mail->setFrom('andre525luis@gmail.com', 'Projeto Enxoval');
+    $mail->addAddress($email, $nome);
+    $mail->isHTML(true);
+    $mail->CharSet = 'UTF-8';
+    $mail->Subject = 'Confirmação de presente';
 
-		foreach($resultados as $resultado) {
+   $imgPresente = str_replace(' ', '_', strtolower(trim($imgPresente)));
+   
+   $urlImagem = "https://blue-woodpecker-158635.hostingersite.com/projetoEnxoval/images/" . urlencode($imgPresente);
 
-			$idPresente = $resultado['idPresente'];
-			$dsPresente = $resultado['dsPresente'];
-			$valorPresente = $resultado['valorPresente'];
-		}
+    $mail->Body = "
+        <h2>Olá, {$nome}!</h2>
+        <p>Agradecemos pelo seu carinho e contribuição!</p>
+        <p>
+            <a href='https://blue-woodpecker-158635.hostingersite.com/projetoEnxoval/view/confirmarPresente.php'>
+                Clique aqui para confirmar seu presente
+            </a>
+        </p>
+        
+        <p><strong>{$dsPresente}</strong></p>
+        
+        <img src=\"$urlImagem\" width=\"200\">
+        
+        <p>Valor: R$ <strong>" . number_format($valorPresente, 2, ',', '.') . "</strong></p>
+        
+    ";
 
-	} else {
+    try {
+        $mail->send();
+        header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
+    } catch (Exception $e) {
+        echo "<script>alert('Erro ao enviar e-mail: {$mail->ErrorInfo}');</script>";
+    }
 
-		echo "
-
-		<META HTTP-EQUIV=REFRESH CONTENT = '0;URL='../view/detalhePresente.php?id=$idPresente'>
-		<script type=\"text/javascript\">
-		alert(\"Algum erro ocorreu!\");
-		</script>                           
-		";
-
-	}
-
-	$para = $email;
-	$assunto = 'Confirmação de presente';
-	$mensagem = "Olá, $nome!\n\n";
-	// $mensagem .= "Agradecemos pelo seu carinho!\n";
-	// $mensagem .= 'Acesse o link para confirmar o seu presente: href="https://blue-woodpecker-158635.hostingersite.com/projetoEnxoval/view/confirmarPresente.php.';
-	$cabecalhos = 'From: andre525luis@gmail.com' . "\r\n" .
-	'Reply-To: andre525luis@gmail.com' . "\r\n" .
-	'X-Mailer: PHP/' . phpversion();
-
-	if (mail($para, $assunto, $mensagem, $cabecalhos)) {
-
-		echo "<script>alert('Confirme o presente pelo seu E-mail!');</script>";echo "
-		<script>
-		window.open('https://" . $_SESSION['linkPresente'] . "', '_blank');
-		</script>";
-		
-		//header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
-
-	} else {
-
-		echo "<script>alert('Erro ao enviar e-mail!');</script>";
-		header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
-
-	}
+    try {
+    
+        $mail->send();
+    
+        echo "<script>
+            alert('Confirme o presente pelo seu E-mail!');
+            window.open('https://" . $_SESSION['linkPresente'] . "', '_blank');
+        </script>";
+        
+        header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
+    
+    } catch (Exception $e) {
+    
+        echo $mail->ErrorInfo;
+        
+        echo "<script>alert('Erro ao enviar e-mail!');</script>";
+ 		header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
+    
+    }
 }
 ?>
