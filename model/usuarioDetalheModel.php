@@ -78,11 +78,6 @@ function reservaPresente($nome,$email){
     try {
     
         $mail->send();
-    
-        echo "<script>
-            alert('Confirme o presente pelo seu E-mail!');
-            window.open('https://" . $_SESSION['linkPresente'] . "', '_blank');
-        </script>";
         
         header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
     

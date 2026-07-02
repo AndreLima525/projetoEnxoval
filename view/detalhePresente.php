@@ -65,6 +65,8 @@ document.querySelectorAll(".btn-comprar").forEach(btn => {
 
         e.preventDefault();
 
+        alert("Caso escolha esse presente, confirme por e-mail para garantir a reserva!");
+
         fetch("detalheUsuario.php")
         .then(res => res.text())
         .then(html => {

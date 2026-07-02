@@ -6,7 +6,7 @@ session_start();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <div class="card">
-	<form method="POST" action="../controller/detalheUsuarioController.php" class="form-grid">
+	<form method="POST"  action="../controller/detalheUsuarioController.php" class="form-grid">
 
 	<?php if (!isset($_SESSION['nome']) || !isset($_SESSION['email'])): ?>
 		<h2 class="titulo-form">Informe seus Dados</h2>
@@ -27,7 +27,7 @@ session_start();
 	
 	<div class="form-actions">
 
-		<button type="submit"  name="verPresente" class="btn btn-primary">
+		<button type="submit" onclick="window.open('https://<?= $_SESSION['linkPresente']; ?>', '_blank');"  name="verPresente" class="btn btn-primary">
 			<i class="fa-solid fa-cart-shopping"></i>
 			Ver Presente
 		</button>
