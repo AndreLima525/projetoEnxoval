@@ -23,7 +23,7 @@ session_start();
 
 	<?php endif; ?>
 
-	<center> <?php if (isset($_SESSION['nome'])) { echo $_SESSION['nome'];} ?> </center>
+	<center> <strong> <?php if (isset($_SESSION['nome'])) { echo $_SESSION['nome'];} ?> </strong> </center>
 	
 	<div class="form-actions">
 
