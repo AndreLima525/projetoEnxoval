@@ -10,11 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-	<div class="page-header">
-		<h2>
-			Lista de Presentes
-		</h2>
-	</div>
+	
 
 
 	<div class="card-pesquisa">
@@ -53,6 +49,12 @@
 			
 		</form>
 
+	</div>
+
+	<div class="page-header">
+		<h2>
+			Lista de Presentes
+		</h2>
 	</div>
 
 
