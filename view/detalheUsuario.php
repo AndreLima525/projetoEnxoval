@@ -27,7 +27,7 @@ session_start();
 	
 	<div class="form-actions">
 
-		<button type="submit" onclick="window.open('https://<?= $_SESSION['linkPresente']; ?>', '_blank');"  name="verPresente" class="btn btn-primary">
+		<button type="submit" onclick="window.open('<?= $_SESSION['linkPresente']; ?>', '_blank');"  name="verPresente" class="btn btn-primary">
 			<i class="fa-solid fa-cart-shopping"></i>
 			Ver Presente
 		</button>
