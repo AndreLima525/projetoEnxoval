@@ -84,18 +84,18 @@ function reservaPresente($nome,$email){
 
         $mail->Body = "
         <h2>Olá, {$nome}!</h2>
-        <p>Agradecemos pelo seu carinho e contribuição!</p>
-        <p>
+        <h3>Agradecemos pelo seu carinho e contribuição!</h3>
+        <h3>
         <a href='https://blue-woodpecker-158635.hostingersite.com/projetoEnxoval/view/confirmaPresente.php?email={$email}&idPresente={$idPresente}'>
         Clique aqui para confirmar seu presente
         </a>
-        </p>
+        </h3>
 
-        <p><strong>{$dsPresente}</strong></p>
+        <h3><strong>{$dsPresente}</strong></h3>
 
         <img src=\"$urlImagem\" width=\"200\">
 
-        <p>Valor: R$ <strong>" . number_format($valorPresente, 2, ',', '.') . "</strong></p>
+        <h3>Valor: R$ <strong>" . number_format($valorPresente, 2, ',', '.') . "</strong></h3>
 
         ";
 
