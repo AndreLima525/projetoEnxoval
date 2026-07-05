@@ -112,7 +112,7 @@ function reservaPresente($nome,$email){
 
             $sqlUpdate = "UPDATE presentes
               SET status = 'R',
-                  reservadoAte = DATE_ADD(NOW(), INTERVAL 01 MINUTE)
+                  reservadoAte = DATE_ADD(NOW(), INTERVAL 30 MINUTE)
               WHERE idPresente = :idPresente
               AND status = 'D'";
 
