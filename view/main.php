@@ -8,6 +8,7 @@
 	<title>Tela Principal</title>
 	<link rel="stylesheet" type="text/css" href="../styles/styleMain.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<link rel="icon" type="image/jpeg" href="../images/logoAtomtech.jpeg">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
 	<script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
 </head>

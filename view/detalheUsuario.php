@@ -4,6 +4,7 @@ session_start();
 
 <link rel="stylesheet" type="text/css" href="../styles/styleNovoUsuario.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/jpeg" href="../images/logoAtomtech.jpeg">
 
 <div class="card">
 	<form method="POST"  action="../controller/detalheUsuarioController.php" class="form-grid">
