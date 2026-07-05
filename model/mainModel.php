@@ -5,6 +5,15 @@ include_once('conn.php');
 function getPresentes($dsPresente = null, $idComodo = null){
 
 	global $pdo;
+
+	$sqlUpdate = "UPDATE presentes
+	SET status = 'D',
+	reservadoAte = NULL
+	WHERE status = 'R'
+	AND reservadoAte <= NOW()";
+
+	$pdo->exec($sqlUpdate);
+
 	$params = [];
 	
 	$sql = "SELECT * FROM presentes WHERE 1=1";

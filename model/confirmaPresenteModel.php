@@ -49,13 +49,14 @@ function confirmaPresente($email,$idPresente){
 			if ($stmt->rowCount() > 0) {
 
 				$sqlUpdate = "UPDATE presentes
-				SET status = :status
+				SET status = 'C',
+				reservadoAte = NULL
 				WHERE idPresente = :idPresente";
 
 				$stmt = $pdo->prepare($sqlUpdate);
 
 				$stmt->execute([
-					':status' => 'C',
+					
 					':idPresente' => $idPresente
 				]);
 

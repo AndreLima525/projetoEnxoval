@@ -110,6 +110,18 @@ function reservaPresente($nome,$email){
 
             $mail->send();
 
+            $sqlUpdate = "UPDATE presentes
+              SET status = 'R',
+                  reservadoAte = DATE_ADD(NOW(), INTERVAL 01 MINUTE)
+              WHERE idPresente = :idPresente
+              AND status = 'D'";
+
+            $stmt = $pdo->prepare($sqlUpdate);
+
+            $stmt->execute([
+                ':idPresente' => $idPresente
+            ]);
+
             header("Refresh:0; url=../view/detalhePresente.php?id=$idPresente");
 
         } catch (Exception $e) {
