@@ -3,6 +3,8 @@ include_once('conn.php');
 
 function confirmaPresente($email,$idPresente){
 
+	date_default_timezone_set('America/Sao_Paulo');
+
 	global $pdo;
 
 	$sqlUsuario = "SELECT * FROM usuarios WHERE email = :email";
@@ -40,7 +42,7 @@ function confirmaPresente($email,$idPresente){
 
 				':idPresente' => $idPresente,
 				':idUsuario' => $idUsuario,
-				':data' => date('Y-m-d')
+				':data' => date('Y-m-d H:i:s')
 
 			]);
 
