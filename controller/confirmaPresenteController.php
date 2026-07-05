@@ -4,7 +4,7 @@ session_start();
 
 include_once('../model/confirmaPresenteModel.php');
 
-if (!isset($_SESSION['idPresente'])) {
+if (!isset($_SESSION['idPresente']) || empty($_GET['idPresente'])) {
 	header("location:../view/main.php");
 }
 
