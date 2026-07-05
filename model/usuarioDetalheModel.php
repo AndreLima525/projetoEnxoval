@@ -35,12 +35,14 @@ function reservaPresente($nome,$email){
         $sqlPostUsuario = "INSERT INTO usuarios (
 
             nomeUsuario,
-            email
+            email,
+            nivelAcesso
 
             ) VALUES (
 
             :nomeUsuario,
-            :email
+            :email,
+            :nivelAcesso
         )";
 
             $stmt = $pdo->prepare($sqlPostUsuario);
@@ -49,6 +51,7 @@ function reservaPresente($nome,$email){
 
                 ':nomeUsuario' => $nome,
                 ':email' => $email,
+                ':nivelAcesso' => 2
 
             ]);
 
