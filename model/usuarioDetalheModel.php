@@ -16,7 +16,7 @@ $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 
 $mail->Username = 'atomtechsl@gmail.com';
-$mail->Password = 'sspqfcgunzmlayig';
+$mail->Password = 'zsowbvimzijjdxdq';
 
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port = 587;
@@ -72,7 +72,11 @@ function reservaPresente($nome,$email){
         $valorPresente = $resultado['valorPresente'];
         $imgPresente = $resultado['imgPresente'];
 
-        $mail->setFrom('andre525luis@gmail.com', 'Projeto Enxoval');
+        $mail->clearAddresses();
+        $mail->clearAttachments();
+
+
+        $mail->setFrom('atomtechsl@gmail.com', 'Projeto Enxoval');
         $mail->addAddress($email, $nome);
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
