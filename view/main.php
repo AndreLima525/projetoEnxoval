@@ -69,9 +69,10 @@
 
 			echo "
 			<script>
-			alert('Nenhum presente encontrado!');
+				alert('Nenhum presente encontrado!');
 			</script>
 			";
+
 		}
 		?>
 		<?php foreach ($dadosPresentes as $dados ): ?>
