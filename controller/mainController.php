@@ -1,20 +1,31 @@
 <?php
 
-	include_once('../model/mainModel.php');
-	include_once('../model/getAuxModel.php');
+include_once('../model/mainModel.php');
+include_once('../model/getAuxModel.php');
 
-	$dadosPresentes = getPresentes($dsPresente = null, $idComodo = null);
+// session_start();
 
-	if (isset($_POST['novo'])) {
-		
-		header('location:../view/cadastroPresente.php');
-	}
+$dadosPresentes = getPresentes($dsPresente = null, $idComodo = null);
 
-	if (isset($_POST['pesquisar'])) {
-		
-		$dsPresente = $_POST['dsPresente'] ?? null;
-		$idComodo = $_POST['comodo'] ?? null ;
+if (isset($_POST['novo'])) {
 
-		$dadosPresentes = getPresentes($dsPresente, $idComodo);
-	}
+	header('location:../view/cadastroPresente.php');
+}
+
+if (isset($_POST['pesquisar'])) {
+
+	$dsPresente = $_POST['dsPresente'] ?? null;
+	$idComodo = $_POST['comodo'] ?? null ;
+
+	$dadosPresentes = getPresentes($dsPresente, $idComodo);
+}
+
+if ( empty($dadosPresentes)) {
+    echo "
+        <script>
+            alert('Nenhum Presente Encontrado!');
+        </script>
+    ";
+}
+
 ?>

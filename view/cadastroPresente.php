@@ -1,4 +1,7 @@
-<?php require_once('../controller/cadastroPresentesController.php'); ?>
+<?php 
+	require_once('../controller/cadastroPresentesController.php'); 
+	require_once('../controller/sairController.php');
+?>
 
 
 <link rel="stylesheet" type="text/css" href="../styles/styleNovoPresente.css">

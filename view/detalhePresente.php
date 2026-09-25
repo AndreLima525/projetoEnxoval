@@ -27,33 +27,195 @@
 					</p>
 
 					<!-- <a href="https://<?= $dadosPresentes['linkPresente'] ?>" target="_blank"> </a> -->
-						<button  class="btn-comprar" id="comprar">
+
+					<?php if (!isset($_SESSION['idUsuarioAdm'])):?>
+
+						<button type="button"  class="btn-comprar" id="comprar">
 							<i class="fa-solid fa-gift"></i>
 							Presentear
 						</button>
 
+					<?php endif; ?>
 
-					<a href="main.php"  class="btn-voltar" id="fecharModal">
-						<i class="fa-solid fa-arrow-left"></i>
-						Voltar à lista
-					</a>
-				</div>
-			<?php endforeach; ?>
+					<?php if (isset($_SESSION['idUsuarioAdm'])):?>
 
-		</div>
+						<button  title="Editar" class="btn-editar"
+
+						data-id="<?= $dadoPresente['idPresente']; ?>"
+						data-descricao="<?= $dadoPresente['dsPresente']; ?>"
+						data-link="<?= $dadoPresente['linkPresente']; ?>"
+						data-comodo="<?= $dadoPresente['idComodo']; ?>" 
+						data-img="<?= htmlspecialchars($dadoPresente['imgPresente']); ?>"
+						data-valor="<?= $dadoPresente['valorPresente']; ?>"
+						id="editar">
+
+						<i class="fa-solid fa-pen"></i>
+						Editar Item
+					</button>
+
+				<?php endif; ?>
+
+
+
+				<a href="main.php"  class="btn-voltar" id="fecharModal">
+					<i class="fa-solid fa-arrow-left"></i>
+					Voltar à lista
+				</a>
+			</div>
+		<?php endforeach; ?>
+
 	</div>
+</div>
 
 
-	<div id="modalConfirmar" class="modal">
-		<div class="modal-content">
-			<span class="fechar">
-			</span>
-			<div id="conteudoModal"></div>
-		</div>
+<div id="modalConfirmar" class="modal">
+	<div class="modal-content">
+		<span class="fechar">
+		</span>
+		<div id="conteudoModal"></div>
 	</div>
+</div>
 
 
 </body>
+
+<div id="modalEditar" class="modal">
+	<div class="modal-content">
+		<center><h3>Editar Presente</h3></center>
+
+		<form action="../model/updatePresenteModel.php"
+		method="POST"
+		enctype="multipart/form-data">
+
+		<input type="hidden" name="id" id="edit-id">
+
+		<!-- LINHA INTEIRA -->
+		<div class="form-group full">
+			<label>Descrição</label>
+			<input type="text" name="descricao" id="edit-descricao">
+		</div>
+
+		<!-- COLUNA 1 -->
+		<div class="form-group">
+			<label>Valor</label>
+			<input type="text" name="valor" id="edit-valor">
+		</div>
+
+		<!-- COLUNA 2 -->
+		<div class="form-group">
+			<label>Cômodo</label>
+
+			<select name="comodo" id="edit-comodo" required>
+				<option value="" disabled>-- Selecione --</option>
+
+				<?php foreach ($resultComodos as $result): ?>
+					<option value="<?= $result['idComodo']; ?>">
+						<?= $result['dsComodo']; ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</div>
+
+		<!-- LINHA INTEIRA -->
+		<div class="form-group full">
+			<label>Link do presente</label>
+			<input
+			type="text"
+			name="link"
+			id="edit-link"
+			placeholder="https://..."
+			>
+		</div>
+
+		<!-- LINHA INTEIRA -->
+		<div class="form-group full">
+			<label>Imagem do Presente</label>
+
+			<img
+			id="edit-preview"
+			src=""
+			style="display:none;"
+			>
+
+			<input
+			type="file"
+			name="imgPresente"
+			id="edit-img"
+			accept="image/*"
+			>
+		</div>
+
+		<div class="form-actions">
+			<button
+			type="button"
+			onclick="fecharModal()"
+			class="btn btn-secondary">
+			Cancelar
+		</button>
+
+		<button
+		type="submit"
+		class="btn btn-primary">
+		Salvar
+	</button>
+</div>
+
+</form>
+</div>
+</div>
+
+<script>
+	const modalEditar = document.getElementById("modalEditar");
+
+document.querySelectorAll(".btn-editar").forEach(btn => {
+
+    btn.addEventListener("click", function() {
+
+        document.getElementById("edit-id").value =
+            this.dataset.id;
+
+        document.getElementById("edit-descricao").value =
+            this.dataset.descricao;
+
+        document.getElementById("edit-valor").value =
+            this.dataset.valor.replace('.', ',');
+
+        document.getElementById("edit-link").value =
+            this.dataset.link;
+
+        document.getElementById("edit-comodo").value =
+            this.dataset.comodo;
+
+        // Mostrar imagem atual
+        const preview = document.getElementById("edit-preview");
+
+        if (this.dataset.img) {
+            preview.src = "../images/" + this.dataset.img;
+            preview.style.display = "block";
+        } else {
+            preview.src = "";
+            preview.style.display = "none";
+        }
+
+        // ABRIR MODAL
+        modalEditar.classList.add("ativo");
+    });
+
+});
+
+function fecharModal() {
+    modalEditar.classList.remove("ativo");
+}
+
+// Fechar clicando fora do modal
+window.addEventListener("click", function(e) {
+
+    if (e.target === modalEditar) {
+        fecharModal();
+    }
+
+});
+</script>
 
 <script>
 const modal = document.getElementById("modalConfirmar");

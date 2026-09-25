@@ -24,15 +24,6 @@ body {
 	color: #1e3a5f;
 }
 
-/* CARD PESQUISA */
-.card-pesquisa {
-	background: #fff;
-	border-radius: 16px;
-	padding: 20px;
-	box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-	margin-bottom: 20px;
-}
-
 /* FORM GRID */
 .form-grid {
 	display: grid;
@@ -41,32 +32,69 @@ body {
 	align-items: end;
 }
 
-/* INPUTS */
-.form-group {
-	display: flex;
-	flex-direction: column;
+.card-pesquisa {
+	background: #fff;
+	border-radius: 16px;
+	padding: 20px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
 }
 
-.form-group label {
+/* FORMULÁRIO DE PESQUISA */
+.form-pesquisa {
+	display: grid;
+	grid-template-columns: 2fr 1fr auto;
+	gap: 15px;
+	align-items: end;
+	width: 100%;
+}
+
+/* CAMPOS */
+.form-pesquisa .form-group {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.form-pesquisa .form-group label {
 	font-size: 13px;
 	margin-bottom: 5px;
 	color: #555;
 }
 
-.form-group input,
-.form-group select {
+.form-pesquisa .form-group input,
+.form-pesquisa .form-group select {
+	width: 100%;
+	height: 42px;
 	padding: 10px;
 	border-radius: 8px;
 	border: 1px solid #ccc;
 	outline: none;
 	transition: 0.3s;
-	height: 42px;
+	box-sizing: border-box;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+.form-pesquisa .form-group input:focus,
+.form-pesquisa .form-group select:focus {
 	border-color: #588AAD;
-	box-shadow: 0 0 5px rgba(88,138,173,0.4);
+	box-shadow: 0 0 5px rgba(88, 138, 173, 0.4);
+}
+
+/* BOTÕES */
+.acoes-pesquisa {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.acoes-pesquisa .btn {
+	height: 42px;
+	padding: 0 15px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
 }
 
 /* BOTÃO */
@@ -227,45 +255,233 @@ body {
 .modal {
 	display: none;
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.6);
+	inset: 0;
+	z-index: 9999;
+
+	background: transparent;
 
 	justify-content: center;
 	align-items: center;
+
+	padding: 20px;
 }
 
 .modal-content {
 	background: white;
-	border-radius: 8px;
-	max-width: 600px;
+
 	width: 100%;
-	padding: 20px;
+	max-width: 620px;
+
+	max-height: 90vh;
+	overflow-y: auto;
+
+	padding: 22px;
+	border-radius: 14px;
 
 	position: relative;
+
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .modal.ativo {
 	display: flex;
 }
 
-	@media (max-width: 768px) {
+@media (max-width: 768px) {
 
-		.modal-content {
-			max-width: 100%;
-			border-radius: 0;
-			/*height: 100%;*/
-		}
-		.modal-content iframe {
-			height: 100%;
-		}
-		.form-grid {
-			grid-template-columns: 1fr;
-		}
+    /* =========================
+       MODAL
+    ========================= */
 
-		.form-actions {
-			grid-column: span 1;
-		}
-	}
+    .modal {
+    	display: none;
+    	position: fixed;
+    	inset: 0;
+    	z-index: 9999;
+
+    	/* Fundo levemente escurecido + embaçado */
+    	background: rgba(0, 0, 0, 0.15);
+
+    	backdrop-filter: blur(6px);
+    	-webkit-backdrop-filter: blur(6px);
+
+    	align-items: center;
+    	justify-content: center;
+
+    	padding: 15px;
+    }
+
+    .modal.ativo {
+    	display: flex;
+    }
+
+    .modal-content {
+    	width: 100%;
+    	max-width: 500px;
+
+    	max-height: calc(100vh - 20px);
+    	height: auto;
+
+    	padding: 16px;
+
+    	border-radius: 14px;
+
+    	overflow-y: auto;
+    	overflow-x: hidden;
+
+    	box-sizing: border-box;
+    }
+
+
+    /* =========================
+       FORMULÁRIOS DO MODAL
+    ========================= */
+
+    .modal-content form {
+    	width: 100%;
+    	min-width: 0;
+    }
+
+    .modal-content .form-grid {
+    	display: grid;
+    	grid-template-columns: 1fr;
+    	gap: 12px;
+    	width: 100%;
+    }
+
+    .modal-content .form-group {
+    	width: 100%;
+    	min-width: 0;
+    }
+
+    .modal-content .form-group.full {
+    	grid-column: auto;
+    }
+
+
+    /* =========================
+       CAMPOS DO MODAL
+    ========================= */
+
+    .modal-content .form-group input,
+    .modal-content .form-group select,
+    .modal-content .form-group textarea {
+    	width: 100%;
+    	max-width: 100%;
+    	height: 40px;
+    	font-size: 14px;
+    	box-sizing: border-box;
+    }
+
+    .modal-content .form-group textarea {
+    	height: 80px;
+    	resize: vertical;
+    }
+
+
+    /* =========================
+       IMAGEM
+    ========================= */
+
+    #edit-preview {
+    	display: block;
+    	width: 80px;
+    	height: 65px;
+    	object-fit: contain;
+    	margin: 0 auto 8px;
+    }
+
+    #edit-img {
+    	width: 100%;
+    	max-width: 100%;
+    	height: 40px;
+    	box-sizing: border-box;
+    }
+
+
+    /* =========================
+       BOTÕES DO MODAL
+    ========================= */
+
+    .modal-content .form-actions {
+    	grid-column: auto;
+
+    	display: flex;
+    	flex-direction: column-reverse;
+
+    	/*gap: 8px;*/
+
+    	width: 100%;
+
+    	/*margin-top: 4px;*/
+    	/*padding-top: 12px;*/
+    }
+
+    .modal-content .form-actions .btn {
+    	width: 100%;
+    	height: 40px;
+    	min-height: 40px;
+    }
+
+
+    /* =========================
+       PESQUISA
+    ========================= */
+
+    .card-pesquisa {
+    	width: 100%;
+    	padding: 15px;
+    	border-radius: 14px;
+    	box-sizing: border-box;
+    }
+
+    .form-pesquisa {
+    	display: grid;
+    	grid-template-columns: 1fr;
+    	gap: 12px;
+    	width: 100%;
+    }
+
+    .form-pesquisa .form-group {
+    	width: 100%;
+    	min-width: 0;
+    }
+
+    .form-pesquisa .form-group input,
+    .form-pesquisa .form-group select {
+    	width: 100%;
+    	height: 40px;
+    	font-size: 14px;
+    	box-sizing: border-box;
+    }
+
+/* BOTÕES */
+.acoes-pesquisa {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 100%;
+}
+
+.acoes-pesquisa .btn {
+	width: 100%;
+	height: 40px;
+	flex: none;
+}
+
+
+    /* =========================
+       IFRAME
+    ========================= */
+
+    .modal-content iframe {
+    	display: block;
+
+    	width: 100%;
+    	max-width: 100%;
+
+    	height: 70vh;
+
+    	border: none;
+    }
+}

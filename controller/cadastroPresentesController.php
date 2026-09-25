@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include_once('../model/cadastroPresenteModel.php');
 include_once('../model/getAuxModel.php');
 
@@ -9,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$linkPresente = $_POST['linkPresente'];
 	$comodo = $_POST['comodo'];
 	$valorPresente = $_POST['valorPresente'];
-
+	$idEvento = $_SESSION['idEvento'];
 	$imgNome = null;
 
 	if (isset($_FILES['imgPresente']) && $_FILES['imgPresente']['error'] == 0) {
@@ -33,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		);
 	}
 
-	$inserir = incluirPresentes($dsPresente, $linkPresente, $comodo, $imgNome, $valorPresente);
+	$inserir = incluirPresentes($dsPresente, $linkPresente, $comodo, $imgNome, $valorPresente, 	$idEvento );
 
 	if ($inserir) {
 

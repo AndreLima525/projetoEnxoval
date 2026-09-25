@@ -2,7 +2,7 @@
 
 include_once('conn.php');
 
-function incluirPresentes($dsPresente, $linkPresente, $idComodo, $imgNome, $valorPresente) {
+function incluirPresentes($dsPresente, $linkPresente, $idComodo, $imgNome, $valorPresente, $idEvento) {
 
 	global $pdo;
 
@@ -13,13 +13,15 @@ function incluirPresentes($dsPresente, $linkPresente, $idComodo, $imgNome, $valo
 		linkPresente,
 		idComodo,
 		imgPresente,
-		valorPresente
+		valorPresente,
+		idEvento
 		) VALUES (
 		:dsPresente,
 		:linkPresente,
 		:idComodo,
 		:imgPresente,
-		:valorPresente
+		:valorPresente,
+		:idEvento
 	)";
 
 		$stmt = $pdo->prepare($sql);
@@ -29,7 +31,8 @@ function incluirPresentes($dsPresente, $linkPresente, $idComodo, $imgNome, $valo
 			':linkPresente' => $linkPresente,
 			':idComodo' => $idComodo,
 			':imgPresente' => $imgNome,
-			':valorPresente' => $valorPresente
+			':valorPresente' => $valorPresente,
+			':idEvento' => $idEvento
 		]);
 
 		return true;

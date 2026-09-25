@@ -8,13 +8,12 @@ $idPresente = $_GET['id'];
 
 $presente = getPresenteById($idPresente);
 
-//echo $_SESSION['nome'] ;
-
-foreach ($presente as $dado) {
+$dadoPresente = $presente[0];
 	
-	$_SESSION['linkPresente'] = $dado['linkPresente'];
-	$_SESSION['idPresente'] = $dado['idPresente'];
-}
+$_SESSION['linkPresente'] = $presente[0]['linkPresente'];
+$_SESSION['idPresente'] = $presente[0]['idPresente'];
+
+
 
 if (empty($presente)) {
 	
