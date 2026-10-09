@@ -146,16 +146,20 @@
 		</div>
 
 		<div class="form-actions">
+			
 			<button
 			type="button"
 			onclick="fecharModal()"
 			class="btn btn-secondary">
+			<i class="fa-solid fa-xmark"></i>
 			Cancelar
 		</button>
 
+		
 		<button
 		type="submit"
 		class="btn btn-primary">
+		<i class="fa-solid fa-pen"></i>
 		Salvar
 	</button>
 </div>

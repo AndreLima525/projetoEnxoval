@@ -37,7 +37,7 @@ include_once('../controller/mainController.php');
 
 				<select name="comodo">
 					<option value="" disabled selected>
-						-- Selecione --
+						-- TODOS --
 					</option>
 
 					<?php foreach ($resultComodos as $result): ?>
@@ -149,36 +149,84 @@ include_once('../controller/mainController.php');
 	<div class="modal-content">
 		<span class="fechar">
 		</span>
-		<div id="conteudoModal"></div>
+		<div id="conteudoModalPresente"></div>
 	</div>
 </div>
+
+<div id="modalConfig" class="modal">
+	<div class="modal-content">
+		<span class="fechar">
+		</span>
+		<div id="conteudoModalConfig"></div>
+	</div>
+</div>
+
 <script>
-	const modal = document.getElementById("modalPresente");
-	const btn = document.getElementById("btnNovo");
-	const conteudo = document.getElementById("conteudoModal");
-	const fechar = document.querySelector(".fechar");
+	
+	const modalPresente = document.getElementById("modalPresente");
+	const modalConfig = document.getElementById("modalConfig");
 
-	btn.onclick = () => {
-		fetch("cadastroPresente.php")
-		.then(response => response.text())
-		.then(html => {
-			conteudo.innerHTML = html;
-			modal.classList.add("ativo");
-		})
-		.catch(() => {
-			conteudo.innerHTML = "<p>Erro ao carregar formulário</p>";
+	const btnNovo = document.getElementById("btnNovo");
+	const btnConfig = document.getElementById("btnConfig");
+
+	const conteudoPresente = document.getElementById("conteudoModalPresente");
+	const conteudoConfig = document.getElementById("conteudoModalConfig");
+
+// Abrir modal de cadastro de presente
+	if (btnNovo) {
+		btnNovo.addEventListener("click", async () => {
+			try {
+				const response = await fetch("cadastroPresente.php");
+
+				if (!response.ok) {
+					throw new Error("Erro HTTP: " + response.status);
+				}
+
+				conteudoPresente.innerHTML = await response.text();
+				modalPresente.classList.add("ativo");
+			} catch (error) {
+				conteudoPresente.innerHTML =
+				"<p>Erro ao carregar formulário de presente.</p>";
+
+				console.error(error);
+			}
 		});
-	};
+	}
 
-	document.addEventListener("click", function(e) {
+// Abrir modal de configurações
+	if (btnConfig) {
+		btnConfig.addEventListener("click", async () => {
+			try {
+				const response = await fetch("configEvento.php");
 
+				if (!response.ok) {
+					throw new Error("Erro HTTP: " + response.status);
+				}
+
+				conteudoConfig.innerHTML = await response.text();
+				modalConfig.classList.add("ativo");
+			} catch (error) {
+				conteudoConfig.innerHTML =
+				"<p>Erro ao carregar configurações.</p>";
+
+				console.error(error);
+			}
+		});
+	}
+
+// Fechar o modal correspondente
+	document.addEventListener("click", function (e) {
 		if (e.target.closest(".btn-fechar")) {
-			modal.classList.remove("ativo");
-			conteudo.innerHTML = "";
+			modalPresente.classList.remove("ativo");
+			modalConfig.classList.remove("ativo");
+
+			conteudoPresente.innerHTML = "";
+			conteudoConfig.innerHTML = "";
 		}
 	});
 
 </script>
+
 </body>
 </html>
 

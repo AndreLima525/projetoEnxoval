@@ -1,16 +1,17 @@
 <?php
 
-	if (isset($_GET['sair'])) {
-		
-		session_unset();
-		session_destroy();
+if (isset($_GET['sair'])) {
+	
+	session_unset();
+	session_destroy();
 
-		header("location:../view/index.php");
-		exit;
+	header("location:../view/index.php");
+	exit;
 
-	} elseif (!isset($_SESSION['idUsuarioAdm'])) {
+} elseif (empty($_SESSION['idUsuarioAdm']) &&
+	empty($_SESSION['nomeUsuarioAdm'])) {
 
-		header("location:../view/index.php");
-		exit;
-	} 
+	header("location:../view/index.php");
+	exit;
+} 
 ?>

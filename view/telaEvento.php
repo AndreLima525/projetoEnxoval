@@ -1,3 +1,9 @@
+<?php
+
+include_once("../controller/telaEventoController.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +17,53 @@
 <body>
 	<div class="main">
 		<div class="card">
-			<div class="title">
-				<h1>Laura e André </h1>
-				<p class="sub">Chá de Casa Nova • Lista de Presentes</p>
-			</div>
+			
+
+			<?php if($tpEvento == 'C'): ?>
+
+				<div class="title">
+
+					<h1> <?php echo($nomeCasalH); ?> e <?php echo($nomeCasalM); ?> </h1>
+
+					<p class="sub"><?php echo($nomeEvento); ?> • Lista de Presentes</p>
+
+				</div>
+
+			<?php endif; ?>
+
+			<?php if($tpEvento == 'B'): ?>
+
+				<div class="title">
+
+					<h1> <?php echo($nomeBebe); ?> </h1>
+
+					<p class="sub"><?php echo($nomeEvento); ?> • Lista de Presentes</p>
+
+				</div>
+
+			<?php endif; ?>
+
+			<?php if($tpEvento == 'E'): ?>
+
+				<div class="title">
+
+					<h1> 
+						<?php if (!empty($nomeCasalH)) {
+							
+							 echo($nomeCasalH);
+						} else {
+
+							echo($nomeCasalM);
+						} ?> s
+					</h1>
+
+					<p class="sub"><?php echo($nomeEvento); ?> • Lista de Presentes</p>
+
+				</div>
+
+			<?php endif; ?>
+
+			
 			<div class="img">
 				<img src="../images/fotoCasal.jpeg">
 			</div>
