@@ -1,6 +1,6 @@
 <?php 
 	require_once('../controller/cadastroPresentesController.php'); 
-	require_once('../controller/sairController.php');
+	require_once('../controller/protected.php');
 ?>
 
 

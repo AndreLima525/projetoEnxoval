@@ -1,7 +1,7 @@
 <?php 
 	// require_once('../controller/configEventoController.php'); 
 require_once("../controller/telaEventoController.php");
-require_once('../controller/sairController.php');
+require_once('../controller/protected.php');
 ?>
 
 

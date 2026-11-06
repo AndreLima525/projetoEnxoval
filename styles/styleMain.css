@@ -124,6 +124,19 @@ body {
 	background: #466f8c;
 }
 
+.btn-exit {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-color: #dc3545;
+    text-decoration: none;
+}
+
+.btn-exit:hover {
+    background-color: #b02a37;
+    color: #ffffff;
+    border-color: #b02a37;
+}
+
 /* CARD PRESENTES (GRID) */
 .card-presentes {
 	background: #fff;

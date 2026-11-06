@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include_once('../controller/mainController.php'); 
+include_once('../controller/mainController.php');
 
 ?>
 
@@ -82,6 +82,10 @@ include_once('../controller/mainController.php');
 		Configurações
 	</button>
 
+	<a href="../controller/sairController.php" class="btn btn-exit">
+		Sair <i class="fa-solid fa-right-from-bracket"></i>
+	</a>
+
 <?php endif; ?>
 
 </form>
@@ -112,9 +116,27 @@ include_once('../controller/mainController.php');
 
 			<?php if (isset($_SESSION['idUsuarioAdm'])):?>
 
-				<a href="detalhePresente.php?id=<?= $dados['idPresente'] ?>" class="btn-presentear">
-					<i class="fa-solid fa-gift"></i> &nbsp; Visualizar
-				</a>
+				<?php if ($dados['status'] == 'D'):?>
+					<a href="detalhePresente.php?id=<?=$dados['idPresente'] ?>" class="btn-presentear">
+						<i class="fa-solid fa-gift"></i> &nbsp; Visualizar
+					</a>
+				<?php endif; ?>
+
+				<?php if ($dados['status'] == 'R'):?>
+
+					<a class="btn-aguardando" title="Reservado">
+						<i class="fa-solid fa-clock"></i> &nbsp; Reservado
+					</a>
+
+				<?php endif; ?>
+
+				<?php if ($dados['status'] == 'C'):?>
+
+					<a class="btn-reservado" title="Presenteado">
+						<i class="fa-solid fa-circle-check"></i> &nbsp; <?= $dados['NM_Usuario'] ?>
+					</a>
+
+				<?php endif; ?>	
 
 			<?php endif; ?>
 
