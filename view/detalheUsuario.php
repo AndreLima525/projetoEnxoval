@@ -9,6 +9,21 @@ session_start();
 <div class="card">
 	<form method="POST"  action="../controller/detalheUsuarioController.php" class="form-grid">
 
+		<?php if (!isset($_SESSION['nome']) || !isset($_SESSION['email'])): ?>
+		<h2 class="titulo-form">Informe seus Dados</h2>
+
+		<div class="form-group full">
+			<label>Nome:</label><?php
+session_start();
+?>
+
+<link rel="stylesheet" type="text/css" href="../styles/styleNovoUsuario.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/jpeg" href="../images/logoAtomtech.jpeg">
+
+<div class="card">
+	<form method="POST"  action="../controller/detalheUsuarioController.php" class="form-grid">
+
 	<?php if (!isset($_SESSION['nome']) || !isset($_SESSION['email'])): ?>
 		<h2 class="titulo-form">Informe seus Dados</h2>
 
@@ -28,7 +43,36 @@ session_start();
 	
 	<div class="form-actions">
 
-		<button type="submit" onclick="window.open('<?= $_SESSION['linkPresente']; ?>', '_blank');"  name="verPresente" class="btn btn-primary">
+		<button type="submit" name="verPresente" class="btn btn-primary">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Ver Presente
+        </button>
+
+		<button type="button" class="btn-fechar">
+			Voltar
+		</button>
+
+	</div>
+
+</form>
+</div>
+
+
+			<input type="text" name="nomeUsuario" required>
+		</div>
+
+		<div class="form-group full">
+			<label>E-mail:</label>
+			<input type="email" name="email" required>
+		</div>
+
+	<?php endif; ?>
+
+	<center> <strong> <?php if (isset($_SESSION['nome'])) { echo $_SESSION['nome'];} ?> </strong> </center>
+	
+	<div class="form-actions">
+
+		<button type="submit" name="verPresente" class="btn btn-primary">
 			<i class="fa-solid fa-cart-shopping"></i>
 			Ver Presente
 		</button>

@@ -287,6 +287,12 @@ body {
 	display: flex;
 }
 
+.presente-null {
+	align-items: center;
+	text-align: center;
+	color: red;
+}
+
 @media (max-width: 768px) {
 
     /* =========================
